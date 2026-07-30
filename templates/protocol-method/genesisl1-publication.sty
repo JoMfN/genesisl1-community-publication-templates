@@ -1,0 +1,300 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{genesisl1-publication}[2026/07/30 v1.0 GenesisL1 community publication system]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage[a4paper,top=22mm,bottom=22mm,left=23mm,right=23mm,headheight=30pt,headsep=8mm,footskip=12mm]{geometry}
+\RequirePackage{microtype}
+\RequirePackage{setspace}
+\RequirePackage{parskip}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{hyperref}
+\RequirePackage{xparse}
+\RequirePackage{etoolbox}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{listings}
+
+\definecolor{GenesisInk}{HTML}{07111D}
+\definecolor{GenesisNavy}{HTML}{0B2748}
+\definecolor{GenesisBlue}{HTML}{245CFF}
+\definecolor{GenesisBlueDeep}{HTML}{1647D9}
+\definecolor{GenesisPale}{HTML}{EEF3FF}
+\definecolor{GenesisPaper}{HTML}{F5F7F9}
+\definecolor{GenesisLine}{HTML}{DCE4EE}
+\definecolor{GenesisMuted}{HTML}{687383}
+\definecolor{GenesisAmber}{HTML}{9A6A14}
+\definecolor{GenesisAmberPale}{HTML}{FDF6E9}
+\definecolor{GenesisGreen}{HTML}{176B4D}
+\definecolor{GenesisGreenPale}{HTML}{EEF8F3}
+
+\color{GenesisInk}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.62em}
+\setstretch{1.04}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=GenesisBlueDeep,
+  urlcolor=GenesisBlueDeep,
+  citecolor=GenesisBlueDeep,
+  pdfborder={0 0 0}
+}
+\urlstyle{same}
+
+% --------------------------------------------------------------------------
+% Official brand asset
+% --------------------------------------------------------------------------
+% Keep the official SVG as the editable master. For LaTeX, export it as a
+% tightly cropped PDF and place it at assets/genesisl1-lockup-navy.pdf.
+\newcommand{\GLLogoFile}{assets/genesisl1-lockup-navy.pdf}
+\NewDocumentCommand{\GenesisLogoFile}{m}{\renewcommand{\GLLogoFile}{#1}}
+\newcommand{\GenesisLogo}[1][7mm]{%
+  \IfFileExists{\GLLogoFile}{%
+    \raisebox{-0.18\height}{\includegraphics[height=#1,keepaspectratio]{\GLLogoFile}}%
+  }{%
+    {\sffamily\bfseries\color{GenesisNavy}GenesisL1}%
+  }%
+}
+
+% --------------------------------------------------------------------------
+% Metadata
+% --------------------------------------------------------------------------
+\newcommand{\GLTitle}{Untitled document}
+\newcommand{\GLShortTitle}{Untitled}
+\newcommand{\GLSubtitle}{}
+\newcommand{\GLType}{Scientific communication}
+\newcommand{\GLAuthor}{}
+\newcommand{\GLAffiliation}{}
+\newcommand{\GLDate}{\today}
+\newcommand{\GLVersion}{Draft 0.1}
+\newcommand{\GLStatus}{DRAFT}
+\newcommand{\GLContact}{}
+\newcommand{\GLRepository}{}
+\newcommand{\GLIdentifier}{}
+\newcommand{\GLLicense}{CC BY 4.0}
+
+\NewDocumentCommand{\GenesisTitle}{m}{\renewcommand{\GLTitle}{#1}}
+\NewDocumentCommand{\GenesisShortTitle}{m}{\renewcommand{\GLShortTitle}{#1}}
+\NewDocumentCommand{\GenesisSubtitle}{m}{\renewcommand{\GLSubtitle}{#1}}
+\NewDocumentCommand{\GenesisType}{m}{\renewcommand{\GLType}{#1}}
+\NewDocumentCommand{\GenesisAuthor}{m}{\renewcommand{\GLAuthor}{#1}}
+\NewDocumentCommand{\GenesisAffiliation}{m}{\renewcommand{\GLAffiliation}{#1}}
+\NewDocumentCommand{\GenesisDate}{m}{\renewcommand{\GLDate}{#1}}
+\NewDocumentCommand{\GenesisVersion}{m}{\renewcommand{\GLVersion}{#1}}
+\NewDocumentCommand{\GenesisStatus}{m}{\renewcommand{\GLStatus}{#1}}
+\NewDocumentCommand{\GenesisContact}{m}{\renewcommand{\GLContact}{#1}}
+\NewDocumentCommand{\GenesisRepository}{m}{\renewcommand{\GLRepository}{#1}}
+\NewDocumentCommand{\GenesisIdentifier}{m}{\renewcommand{\GLIdentifier}{#1}}
+\NewDocumentCommand{\GenesisLicense}{m}{\renewcommand{\GLLicense}{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\GenesisLogo}
+\fancyhead[R]{\sffamily\scriptsize\color{GenesisMuted}\GLType}
+\fancyfoot[L]{\sffamily\tiny\color{GenesisMuted}\MakeUppercase{\GLShortTitle}}
+\fancyfoot[R]{\sffamily\tiny\color{GenesisMuted}\thepage\ /\ \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{GenesisLine}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}
+  {\sffamily\bfseries\Large\color{GenesisNavy}}
+  {\thesection}{0.7em}{}
+  [\vspace{0.12em}{\color{GenesisBlue}\rule{18mm}{1.1pt}}]
+\titlespacing*{\section}{0pt}{1.35em}{0.55em}
+
+\titleformat{\subsection}
+  {\sffamily\bfseries\large\color{GenesisNavy}}
+  {\thesubsection}{0.65em}{}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.35em}
+
+\newcommand{\GenesisLabel}[1]{%
+  {\sffamily\bfseries\scriptsize\color{GenesisBlue}\MakeUppercase{#1}}%
+}
+
+\newcommand{\GenesisMeta}[2]{%
+  \begin{minipage}[t]{0.48\linewidth}
+    \GenesisLabel{#1}\\[-0.1em]
+    {\sffamily\small #2}
+  \end{minipage}
+}
+
+\newcommand{\MakeGenesisTitle}{%
+  \thispagestyle{empty}
+  \begin{flushright}
+    \GenesisLogo[9mm]\\[-0.2em]
+    {\sffamily\scriptsize\color{GenesisMuted}OPEN SCIENTIFIC INFRASTRUCTURE}
+  \end{flushright}
+  \vspace{15mm}
+  \GenesisLabel{\GLType}\par
+  \vspace{2.5mm}
+  {\sffamily\bfseries\fontsize{25}{29}\selectfont\color{GenesisNavy}\GLTitle\par}
+  \ifdefempty{\GLSubtitle}{}{%
+    \vspace{3mm}
+    {\sffamily\fontsize{13}{17}\selectfont\color{GenesisBlueDeep}\GLSubtitle\par}
+  }
+  \vspace{7mm}
+  {\color{GenesisLine}\rule{\linewidth}{0.8pt}}
+  \vspace{5mm}
+  \GenesisMeta{Author / group}{\GLAuthor}\hfill
+  \GenesisMeta{Affiliation / role}{\GLAffiliation}\par\vspace{4mm}
+  \GenesisMeta{Version / date}{\GLVersion\enspace$\cdot$\enspace\GLDate}\hfill
+  \GenesisMeta{Document status}{\GLStatus}\par\vspace{4mm}
+  \GenesisMeta{Identifier}{\GLIdentifier}\hfill
+  \GenesisMeta{Licence}{\GLLicense}\par
+  \vfill
+  \begin{tcolorbox}[
+    colback=GenesisPale,colframe=GenesisLine,boxrule=0.6pt,arc=0pt,
+    left=5mm,right=5mm,top=4mm,bottom=4mm,
+    borderline west={2.4pt}{0pt}{GenesisBlue}]
+    {\sffamily\small
+    GenesisL1 templates encourage exact references, explicit provenance, reproducible
+    methods where appropriate, and honest separation of evidence, interpretation,
+    limitations, and future work. Use only the modules that serve the document.}
+  \end{tcolorbox}
+  \vspace{5mm}
+  {\sffamily\scriptsize\color{GenesisMuted}
+    \ifdefempty{\GLRepository}{}{\textbf{Repository:} \GLRepository\quad}
+    \ifdefempty{\GLContact}{}{\textbf{Contact:} \GLContact}
+  }\par
+  \clearpage
+}
+
+% --------------------------------------------------------------------------
+% Reusable modules
+% --------------------------------------------------------------------------
+\NewDocumentEnvironment{GenesisAbstract}{+b}{%
+  \begin{tcolorbox}[
+    title={Summary},fonttitle=\sffamily\bfseries,
+    coltitle=GenesisNavy,colback=GenesisPale,colframe=GenesisLine,
+    boxrule=0.6pt,arc=0pt,left=5mm,right=5mm,top=3mm,bottom=3mm]
+  #1
+  \end{tcolorbox}
+}{}
+
+\NewDocumentEnvironment{GenesisEvidence}{O{Evidence / observation}+b}{%
+  \begin{tcolorbox}[
+    title={#1},fonttitle=\sffamily\bfseries,
+    coltitle=GenesisNavy,colback=white,colframe=GenesisLine,
+    boxrule=0.6pt,arc=0pt,left=5mm,right=5mm,top=3mm,bottom=3mm,
+    borderline west={2.2pt}{0pt}{GenesisBlue}]
+  #2
+  \end{tcolorbox}
+}{}
+
+\NewDocumentEnvironment{GenesisInterpretation}{+b}{%
+  \begin{tcolorbox}[
+    title={Interpretation},fonttitle=\sffamily\bfseries,
+    coltitle=GenesisNavy,colback=GenesisPale,colframe=GenesisLine,
+    boxrule=0.6pt,arc=0pt,left=5mm,right=5mm,top=3mm,bottom=3mm]
+  #1
+  \end{tcolorbox}
+}{}
+
+\NewDocumentEnvironment{GenesisLimitations}{+b}{%
+  \begin{tcolorbox}[
+    title={Limitations and uncertainty},fonttitle=\sffamily\bfseries,
+    coltitle=GenesisAmber,colback=GenesisAmberPale,colframe=GenesisAmber,
+    opacityframe=0.55,boxrule=0.7pt,arc=0pt,
+    left=5mm,right=5mm,top=3mm,bottom=3mm]
+  #1
+  \end{tcolorbox}
+}{}
+
+\NewDocumentEnvironment{GenesisTrustBoundary}{+b}{%
+  \begin{tcolorbox}[
+    title={Verification boundary},fonttitle=\sffamily\bfseries,
+    coltitle=GenesisNavy,colback=GenesisAmberPale,colframe=GenesisAmber,
+    opacityframe=0.55,boxrule=0.7pt,arc=0pt,
+    left=5mm,right=5mm,top=3mm,bottom=3mm]
+  #1
+  \end{tcolorbox}
+}{}
+
+\NewDocumentEnvironment{GenesisProvenance}{+b}{%
+  \begin{tcolorbox}[
+    title={Provenance and reproducibility},fonttitle=\sffamily\bfseries,
+    coltitle=GenesisGreen,colback=GenesisGreenPale,colframe=GenesisGreen,
+    opacityframe=0.6,boxrule=0.7pt,arc=0pt,
+    left=5mm,right=5mm,top=3mm,bottom=3mm]
+  #1
+  \end{tcolorbox}
+}{}
+
+\NewDocumentEnvironment{GenesisAction}{O{Invitation / next step}+b}{%
+  \begin{tcolorbox}[
+    title={#1},fonttitle=\sffamily\bfseries,
+    coltitle=white,colback=GenesisNavy,colframe=GenesisNavy,
+    boxrule=0pt,arc=0pt,left=6mm,right=6mm,top=4mm,bottom=4mm]
+  \color{white}#2
+  \end{tcolorbox}
+}{}
+
+\NewDocumentEnvironment{GenesisProcedure}{O{Procedure}+b}{%
+  \begin{tcolorbox}[
+    title={#1},fonttitle=\sffamily\bfseries,
+    coltitle=white,colback=white,colframe=GenesisNavy,colbacktitle=GenesisNavy,
+    boxrule=0.7pt,arc=0pt,left=5mm,right=5mm,top=3mm,bottom=3mm]
+  #2
+  \end{tcolorbox}
+}{}
+
+\NewDocumentCommand{\ClaimStatus}{m m}{%
+  \begin{tcolorbox}[
+    colback=white,colframe=GenesisLine,boxrule=0.6pt,arc=0pt,
+    left=4mm,right=4mm,top=3mm,bottom=3mm,
+    borderline west={2pt}{0pt}{GenesisBlue}]
+  \GenesisLabel{#1}\quad #2
+  \end{tcolorbox}
+}
+
+\NewDocumentCommand{\CentralQuestion}{m}{%
+  \begin{tcolorbox}[
+    colback=GenesisPale,colframe=GenesisBlue,boxrule=0.8pt,arc=0pt,
+    left=6mm,right=6mm,top=4mm,bottom=4mm]
+  \GenesisLabel{Central question}\par\smallskip
+  {\sffamily\bfseries\large\color{GenesisNavy}#1}
+  \end{tcolorbox}
+}
+
+\newlist{genesissteps}{enumerate}{1}
+\setlist[genesissteps]{
+  label=\textcolor{GenesisBlue}{\sffamily\bfseries\arabic*.},
+  leftmargin=2.3em,itemsep=0.55em,topsep=0.35em
+}
+\setlist[itemize]{
+  label=\textcolor{GenesisBlue}{\raisebox{0.1em}{\tiny$\blacksquare$}},
+  leftmargin=1.65em,itemsep=0.22em,topsep=0.35em
+}
+
+\newcommand{\StatusLegend}{%
+  \begin{tcolorbox}[colback=GenesisPaper,colframe=GenesisLine,boxrule=0.5pt,arc=0pt,
+    left=4mm,right=4mm,top=3mm,bottom=3mm]
+  \GenesisLabel{Suggested status vocabulary}\par\smallskip
+  {\sffamily\small
+  OBSERVED \quad MEASURED \quad DEMONSTRATED \quad REPRODUCED \quad
+  INFERRED \quad HYPOTHESISED \quad PROPOSED \quad IN PROGRESS \quad PLANNED}
+  \end{tcolorbox}
+}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  rulecolor=\color{GenesisLine},
+  backgroundcolor=\color{GenesisPaper},
+  breaklines=true,
+  columns=fullflexible
+}

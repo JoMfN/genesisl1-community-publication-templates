@@ -1,0 +1,90 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{genesisl1-publication}
+
+\GenesisTitle{Title of the Scientific Paper}
+\GenesisShortTitle{Short paper title}
+\GenesisSubtitle{Optional subtitle}
+\GenesisType{Scientific Paper}
+\GenesisAuthor{Author names}
+\GenesisAffiliation{Affiliations and ORCID identifiers}
+\GenesisVersion{Draft 0.1}
+\GenesisStatus{DRAFT / COMMUNITY REVIEW / RELEASED}
+\GenesisIdentifier{DOI, repository identifier, or document ID}
+\GenesisRepository{}
+\GenesisContact{}
+\GenesisLicense{CC BY 4.0}
+
+\begin{document}
+\MakeGenesisTitle
+
+\begin{GenesisAbstract}
+State the research question, approach, principal result, and interpretation. Keep claims
+proportional to the evidence. Add keywords below when useful.
+\end{GenesisAbstract}
+
+\textbf{Keywords:} keyword one; keyword two; keyword three.
+
+\StatusLegend
+
+\section{Introduction}
+Define the scientific context, the unresolved problem, and why the work matters.
+
+\CentralQuestion{What precise question, objective, or hypothesis guides this study?}
+
+\section{Materials, data, and inputs}
+Describe samples, datasets, instruments, software, model versions, and inclusion criteria.
+Use exact identifiers where available.
+
+\section{Methods}
+Describe the design and analysis at the level needed for independent examination or
+reproduction. Distinguish preregistered steps from exploratory work.
+
+\begin{GenesisProvenance}
+List repositories, content hashes, software commits, environment versions, dataset IDs,
+contract addresses, transaction references, or block heights when they materially improve
+reproducibility. None are mandatory when irrelevant.
+\end{GenesisProvenance}
+
+\section{Results}
+Report observations and analyses without mixing them unnecessarily with interpretation.
+
+\begin{GenesisEvidence}
+Insert the directly observed, measured, calculated, or implemented result.
+\end{GenesisEvidence}
+
+\section{Discussion}
+Interpret the results, compare them with prior work, and consider alternative explanations.
+
+\begin{GenesisInterpretation}
+State the preferred interpretation and explain why it is presently warranted.
+\end{GenesisInterpretation}
+
+\begin{GenesisLimitations}
+Describe uncertainty, possible bias, unresolved assumptions, negative results, and limits
+on generalisation.
+\end{GenesisLimitations}
+
+\section{Relevance to verifiable scientific infrastructure}
+Optional. Explain whether exact data, model identity, deterministic execution, rights, or
+public provenance contribute to the work.
+
+\begin{GenesisTrustBoundary}
+A ledger may establish ordering, authorisation, byte commitments, provenance, or
+deterministic execution. It does not by itself establish data quality, scientific truth,
+biomedical validity, clinical safety, or correctness of interpretation.
+\end{GenesisTrustBoundary}
+
+\section{Conclusion}
+Answer the central question at the level supported by the evidence and identify the next
+most informative test.
+
+\section*{Author contributions}
+Use a recognised contribution taxonomy or a clear prose statement.
+
+\section*{Data, code, ethics, and competing interests}
+Provide the relevant declarations. Sensitive or identifiable data should remain off-chain
+or use an appropriate protected architecture.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

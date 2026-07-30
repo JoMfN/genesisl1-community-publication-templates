@@ -1,0 +1,61 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{genesisl1-publication}
+\GenesisTitle{Title of the Protocol or Method}
+\GenesisShortTitle{Protocol short name}
+\GenesisSubtitle{Laboratory, computational, contract, validation, or governance procedure}
+\GenesisType{Protocol / Method Description}
+\GenesisAuthor{Authors and maintainers}
+\GenesisAffiliation{Laboratory, project, or community}
+\GenesisVersion{Version 0.1}
+\GenesisStatus{DRAFT / VALIDATED / DEPRECATED}
+\GenesisIdentifier{Protocol ID, DOI, repository tag, or contract version}
+\GenesisLicense{CC BY 4.0}
+\begin{document}
+\MakeGenesisTitle
+\begin{GenesisAbstract}
+State the purpose, intended output, domain of use, and validation status.
+\end{GenesisAbstract}
+\section{Scope}
+Define what the method does, what it does not do, intended users, and conditions under
+which it should not be used.
+\section{Safety, ethics, privacy, and rights}
+Describe biological, chemical, clinical, computational, privacy, legal, or key-management
+risks before the procedure begins.
+\section{Inputs and prerequisites}
+List materials, samples, datasets, instruments, software, accounts, permissions, network
+settings, and required expertise.
+\section{Parameters and configuration}
+Record defaults, allowed ranges, units, versions, and environment assumptions.
+\section{Procedure}
+\begin{GenesisProcedure}
+\begin{genesissteps}
+\item Prepare and verify all inputs.
+\item Record initial state, identifiers, and checksums.
+\item Execute the method step by step.
+\item Perform quality-control checks at defined checkpoints.
+\item Store outputs and provenance records.
+\end{genesissteps}
+\end{GenesisProcedure}
+\section{Quality control and acceptance criteria}
+Specify checks, tolerances, controls, and rejection rules.
+\section{Expected outputs}
+Describe normal outputs, units, file formats, state changes, and interpretation limits.
+\section{Failure modes and troubleshooting}
+List failures, diagnostic signs, likely causes, corrective actions, and stop conditions.
+\section{Validation}
+State how the method was tested, by whom, against what reference, and with what result.
+\begin{GenesisProvenance}
+Record exact commits, containers, firmware, model IDs, contract addresses, transaction
+hashes, chain ID, block height, and data commitments only when relevant.
+\end{GenesisProvenance}
+\begin{GenesisTrustBoundary}
+Deterministic execution can show that a specified procedure ran over exact inputs. It does
+not establish scientific validity, clinical safety, legal compliance, or suitability for an
+untested context.
+\end{GenesisTrustBoundary}
+\section{Change log}
+\begin{longtable}{p{0.16\linewidth}p{0.18\linewidth}p{0.56\linewidth}}
+\toprule Version & Date & Change \\ \midrule
+0.1 & \today & Initial draft. \\ \bottomrule
+\end{longtable}
+\end{document}

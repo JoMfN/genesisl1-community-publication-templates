@@ -1,0 +1,66 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{genesisl1-publication}
+\GenesisTitle{Title of the Manual}
+\GenesisShortTitle{Manual short title}
+\GenesisSubtitle{User, researcher, developer, validator, or curator guide}
+\GenesisType{Manual}
+\GenesisAuthor{Authors and maintainers}
+\GenesisAffiliation{Project or community}
+\GenesisVersion{Version 0.1}
+\GenesisStatus{DRAFT / CURRENT / SUPERSEDED}
+\GenesisIdentifier{Software release, documentation tag, or manual ID}
+\GenesisLicense{CC BY 4.0}
+\begin{document}
+\MakeGenesisTitle
+\tableofcontents
+\clearpage
+\section{About this manual}
+State its purpose, supported version, intended audience, assumptions, and maintenance policy.
+\section{System overview}
+Explain the components and how they relate. Start with the user's task rather than internal
+implementation details.
+\section{Quick start}
+\begin{GenesisProcedure}[First successful workflow]
+\begin{genesissteps}
+\item Confirm requirements and supported environment.
+\item Install or access the system.
+\item Complete the smallest safe example.
+\item Verify the expected output.
+\item Record where users can continue.
+\end{genesissteps}
+\end{GenesisProcedure}
+\section{Core concepts}
+Define terms, objects, roles, permissions, data flow, and trust assumptions.
+\section{Installation or access}
+Give platform-specific steps, dependencies, checksums, configuration files, and permissions.
+\section{Common tasks}
+Organise each task as goal, prerequisites, steps, expected result, verification, and recovery.
+\subsection{Task one}
+Describe a routine workflow.
+\subsection{Task two}
+Describe another routine workflow.
+\section{Configuration}
+Document defaults, environment variables, endpoints, chain settings, file locations, and
+compatibility constraints.
+\section{Security, privacy, and key management}
+Explain wallet signing, private keys, credentials, sensitive data, backups, encryption,
+permissions, and user responsibilities.
+\section{Troubleshooting}
+\begin{longtable}{p{0.24\linewidth}p{0.28\linewidth}p{0.38\linewidth}}
+\toprule Symptom & Likely cause & Resolution \\ \midrule
+Unexpected output & Version or input mismatch & Verify versions, inputs, and logs. \\
+Unable to connect & Endpoint or network issue & Check settings and independent status sources. \\
+\bottomrule
+\end{longtable}
+\section{Maintenance and upgrades}
+Describe compatibility, migration, backup, rollback, deprecation, and release notes.
+\section{Glossary}
+Define project-specific and scientific terms in plain language.
+\section{Support and contribution}
+List issue trackers, discussion channels, contribution expectations, and private security reporting.
+\section{Version history}
+\begin{longtable}{p{0.16\linewidth}p{0.18\linewidth}p{0.56\linewidth}}
+\toprule Version & Date & Change \\ \midrule
+0.1 & \today & Initial draft. \\ \bottomrule
+\end{longtable}
+\end{document}

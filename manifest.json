@@ -1,0 +1,34 @@
+{
+  "name": "genesisl1-community-publication-templates",
+  "version": "0.1.0",
+  "date": "2026-07-30",
+  "status": "community-review",
+  "templates": [
+    {
+      "id": "scientific-paper",
+      "path": "templates/scientific-paper"
+    },
+    {
+      "id": "community-letter",
+      "path": "templates/community-letter"
+    },
+    {
+      "id": "scientific-review",
+      "path": "templates/scientific-review"
+    },
+    {
+      "id": "scientific-letter",
+      "path": "templates/scientific-letter"
+    },
+    {
+      "id": "protocol-method",
+      "path": "templates/protocol-method"
+    },
+    {
+      "id": "manual",
+      "path": "templates/manual"
+    }
+  ],
+  "web_catalogue": "web/index.html",
+  "shared_style": "shared/genesisl1-publication.sty"
+}
