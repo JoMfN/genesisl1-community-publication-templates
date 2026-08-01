@@ -1,6 +1,6 @@
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{genesisl1-publication}[2026/07/30 v1.0 GenesisL1 community publication system]
+\ProvidesPackage{genesisl1-publication}[2026/08/01 v3.0 GenesisL1 community publication system]
 
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
@@ -27,14 +27,14 @@
 \RequirePackage{amssymb}
 \RequirePackage{listings}
 
-\definecolor{GenesisInk}{HTML}{07111D}
-\definecolor{GenesisNavy}{HTML}{0B2748}
-\definecolor{GenesisBlue}{HTML}{245CFF}
-\definecolor{GenesisBlueDeep}{HTML}{1647D9}
-\definecolor{GenesisPale}{HTML}{EEF3FF}
+\definecolor{GenesisInk}{HTML}{20252B}
+\definecolor{GenesisNavy}{HTML}{1A2E4A}
+\definecolor{GenesisBlue}{HTML}{315A85}
+\definecolor{GenesisBlueDeep}{HTML}{315A85}
+\definecolor{GenesisPale}{HTML}{EFF4F8}
 \definecolor{GenesisPaper}{HTML}{F5F7F9}
-\definecolor{GenesisLine}{HTML}{DCE4EE}
-\definecolor{GenesisMuted}{HTML}{687383}
+\definecolor{GenesisLine}{HTML}{CBD2D9}
+\definecolor{GenesisMuted}{HTML}{68727E}
 \definecolor{GenesisAmber}{HTML}{9A6A14}
 \definecolor{GenesisAmberPale}{HTML}{FDF6E9}
 \definecolor{GenesisGreen}{HTML}{176B4D}
@@ -57,9 +57,9 @@
 % --------------------------------------------------------------------------
 % Official brand asset
 % --------------------------------------------------------------------------
-% Keep the official SVG as the editable master. For LaTeX, export it as a
-% tightly cropped PDF and place it at assets/genesisl1-lockup-navy.pdf.
-\newcommand{\GLLogoFile}{assets/genesisl1-lockup-navy.pdf}
+% The build copies the official press-kit brand assets into assets/brand/.
+% pdfLaTeX uses the supplied high-resolution PNG lockup.
+\newcommand{\GLLogoFile}{assets/brand/genesisl1-lockup-navy-2400.png}
 \NewDocumentCommand{\GenesisLogoFile}{m}{\renewcommand{\GLLogoFile}{#1}}
 \newcommand{\GenesisLogo}[1][7mm]{%
   \IfFileExists{\GLLogoFile}{%
