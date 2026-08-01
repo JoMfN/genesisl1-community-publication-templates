@@ -1,34 +1,50 @@
 {
   "name": "genesisl1-community-publication-templates",
-  "version": "0.1.0",
-  "date": "2026-07-30",
+  "version": "3.0.0",
+  "date": "2026-08-01",
   "status": "community-review",
+  "source_repository": "https://github.com/JoMfN/genesisl1-community-publication-templates",
   "templates": [
     {
       "id": "scientific-paper",
-      "path": "templates/scientific-paper"
+      "path": "templates/scientific-paper",
+      "layout": "two-column",
+      "fields": [
+        "blockchain",
+        "computer-science",
+        "chemistry",
+        "biochemistry",
+        "biology"
+      ]
     },
     {
       "id": "community-letter",
-      "path": "templates/community-letter"
+      "path": "templates/community-letter",
+      "layout": "single-column"
     },
     {
       "id": "scientific-review",
-      "path": "templates/scientific-review"
+      "path": "templates/scientific-review",
+      "layout": "single-column"
     },
     {
       "id": "scientific-letter",
-      "path": "templates/scientific-letter"
+      "path": "templates/scientific-letter",
+      "layout": "single-column"
     },
     {
       "id": "protocol-method",
-      "path": "templates/protocol-method"
+      "path": "templates/protocol-method",
+      "layout": "single-column"
     },
     {
       "id": "manual",
-      "path": "templates/manual"
+      "path": "templates/manual",
+      "layout": "single-column"
     }
   ],
-  "web_catalogue": "web/index.html",
-  "shared_style": "shared/genesisl1-publication.sty"
+  "web_source": "site/index.html",
+  "web_output": "web/index.html",
+  "build_entrypoint": "make all",
+  "release_manifest": "release-manifest.toml"
 }

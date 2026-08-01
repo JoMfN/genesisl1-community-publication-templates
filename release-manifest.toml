@@ -1,0 +1,29 @@
+[release]
+name = "genesisl1-community-publication-templates"
+version = "3.0.0"
+templates = [
+  "scientific-paper",
+  "community-letter",
+  "scientific-review",
+  "scientific-letter",
+  "protocol-method",
+  "manual",
+]
+
+[build]
+latex_engine = "pdflatex"
+passes = 2
+web_source = "site"
+web_output = "web"
+build_directory = "build"
+
+[privacy]
+excluded_extensions = [
+  ".aux", ".log", ".toc", ".out", ".bbl", ".blg", ".fls",
+  ".fdb_latexmk", ".synctex.gz", ".lof", ".lot", ".los",
+  ".env", ".pem", ".key",
+]
+excluded_names = [
+  ".git", ".github", ".ssh", "__pycache__", ".DS_Store",
+  "id_rsa", "id_ed25519", "wallet", "keystore",
+]
