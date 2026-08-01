@@ -1,0 +1,211 @@
+\documentclass[
+  blockchain,
+  computerscience,
+  chemistry,
+  biochemistry,
+  biology
+]{genesisl1-paper}
+
+\GenesisTitle{A Cross-Field Template for Reproducible Community Science}
+\GenesisSubtitle{Equations, chemical compounds, code, wide figures and exact artifact references}
+\GenesisRunningTitle{Cross-field reproducible community science}
+\GenesisVersion{Version 3.0}
+\GenesisStatus{COMMUNITY REVIEW}
+\GenesisDate{August 2026}
+\GenesisAuthors{GenesisL1 Community Publication Templates}
+\GenesisAffiliations{Blockchain, computer science, chemistry, biochemistry and biology}
+\GenesisCorrespondence{community@example.org}
+\GenesisIdentifier{GL1-CPT-PAPER-3.0}
+\GenesisRepository{https://github.com/JoMfN/genesisl1-community-publication-templates}
+\GenesisFields{Cross-field profile}
+\GenesisKeywords{community science; reproducibility; chemistry; software; provenance}
+
+\GenesisDataIdentifier{doi:10.xxxx/example-dataset}
+\GenesisCodeIdentifier{git:0123456789abcdef}
+\GenesisModelIdentifier{model:v1.2.0}
+\GenesisExecutionIdentifier{run:example-2026-08-01}
+\GenesisContentHash{sha256:placeholder}
+\GenesisIPFSCID{bafy...placeholder}
+\GenesisIPFSGateway{Optional resolver supplied by the author}
+
+\begin{document}
+
+\begin{GenesisFrontMatter}
+\begin{GenesisStructuredAbstract}
+\AbstractBackground{
+Reproducible community science requires a manuscript format that can express
+mathematical models, chemical identities, biological nomenclature, software, and
+verifiable artifacts without allowing infrastructure language to overwhelm the science.
+}
+\AbstractMethods{
+A two-column \LaTeX{} class was implemented with structured abstracts, numbered
+equations and compounds, language-aware code boxes, wide floats, numerical citations,
+and optional content-addressed metadata.
+}
+\AbstractResults{
+The example compiled with standard pdf\LaTeX{} and produced stable references to
+\cref{eq:rate}, \cref{sch:compounds}, \cref{lst:python}, and \cref{fig:wide}.
+}
+\AbstractConclusion{
+The resulting format supports cross-field scientific writing while keeping interpretation,
+limitations, provenance, and future infrastructure distinct.
+}
+\end{GenesisStructuredAbstract}
+\end{GenesisFrontMatter}
+
+\section{Introduction}
+Scientific manuscripts frequently connect mathematical analysis, molecular structures,
+biological observations, software, and computational provenance. The template treats
+these as compatible components rather than as reasons to impose one rhetorical model
+on every author.
+
+\section{Equations}
+Numbered equations use standard \LaTeX{} semantics. For example, an elementary rate
+model can be written as
+\begin{equation}
+  v = \frac{V_{\max}[S]}{K_{\mathrm m} + [S]},
+  \label{eq:rate}
+\end{equation}
+and cited as \cref{eq:rate}. The equation remains human-readable in source and
+professionally typeset in the document.
+
+\section{Chemistry and biochemistry}
+Chemical formulae use \texttt{mhchem}, for example
+\begin{equation}
+  \ce{ATP + H2O -> ADP + P_i + H+}.
+  \label{eq:atp}
+\end{equation}
+
+\begin{scheme*}[t]
+  \centering
+  \begin{tabular}{c@{\hspace{18mm}}c}
+    \chemfig{*6(-=-(-OH)=-=)} &
+    \chemfig{*6(-=-(-NH_2)=-=)}\\[1mm]
+    \compound{phenol-example} &
+    \compound{aniline-example}
+  \end{tabular}
+  \caption{Example structures with persistent compound numbering. Compounds
+  \compoundref{phenol-example} and \compoundref{aniline-example} can be cited
+  consistently throughout the manuscript.}
+  \label{sch:compounds}
+\end{scheme*}
+
+Biological names may be written as \taxon{Escherichia coli}, genes as \gene{lacZ},
+and proteins as \protein{LacZ}. These lightweight commands can be adapted to the
+nomenclature rules of a specific discipline.
+
+\section{Computer science and blockchain}
+Code is typeset with the standard \texttt{listings} package, so the default build does
+not require shell escape.
+
+\begin{GenesisCode}[
+  language=Python,
+  caption={A minimal deterministic transformation},
+  label={lst:python}
+]
+from hashlib import sha256
+
+def commit(payload: bytes) -> str:
+    # Return a lowercase SHA-256 commitment.
+    return sha256(payload).hexdigest()
+\end{GenesisCode}
+
+A Solidity fragment can be cited independently:
+
+\begin{GenesisCode}[
+  language=Solidity,
+  caption={A content commitment stored by a contract},
+  label={lst:solidity}
+]
+pragma solidity ^0.8.24;
+
+contract ArtifactCommitment {
+    mapping(bytes32 => address) public author;
+
+    function register(bytes32 digest) external {
+        require(author[digest] == address(0), "already registered");
+        author[digest] = msg.sender;
+    }
+}
+\end{GenesisCode}
+
+The result in \cref{lst:python} describes a byte commitment. It does not establish the
+quality, legality, safety, or scientific interpretation of the committed object.
+
+\section{Wide figures}
+Single-column figures use the ordinary \texttt{figure} environment. Important diagrams
+may use \texttt{figure*} or the helper environment below to span both columns.
+
+\begin{GenesisWideFigure}[t]
+  \fbox{%
+    \begin{minipage}{0.92\textwidth}
+      \centering
+      \vspace{7mm}
+      \sffamily\bfseries\color{GenesisNavy}
+      Scientific question
+      \(\longrightarrow\)
+      exact inputs
+      \(\longrightarrow\)
+      method or model
+      \(\longrightarrow\)
+      result
+      \(\longrightarrow\)
+      interpretation\\[2mm]
+      \normalfont\small\color{GenesisInk}
+      Each arrow denotes an explicit dependency, not automatic scientific validation.
+      \vspace{7mm}
+    \end{minipage}
+  }
+  \caption{A full-width figure spanning the two-column scientific body.}
+  \label{fig:wide}
+\end{GenesisWideFigure}
+
+\section{Results}
+The compiled example preserved the order and labels of equations, schemes, code
+listings, and wide figures. All references were generated by \texttt{cleveref}.
+
+\begin{GenesisEvidence}
+The build produced a two-column paper in which the official GenesisL1 lockup appeared
+only in the first-page front matter. Subsequent page headers contained text only.
+\end{GenesisEvidence}
+
+\section{Discussion}
+Our results provide evidence that a single paper class can support the selected fields
+without making every manuscript about blockchain infrastructure. This observation
+points towards a broader community publication system, but suitability for a specific
+journal or reporting guideline must still be evaluated separately.
+
+\begin{GenesisInterpretation}
+The main value is not visual uniformity by itself. It is the consistent distinction among
+direct observations, interpretations, limitations, and exact supporting artifacts.
+\end{GenesisInterpretation}
+
+\begin{GenesisLimitations}
+This example is a template demonstration rather than an empirical validation study.
+Chemical structures generated from SMILES are intentionally left to a separate,
+reviewable preprocessing step. The default manuscript build consumes committed
+graphics or \texttt{chemfig} source and does not execute external converters.
+\end{GenesisLimitations}
+
+\section{Conclusion}
+A supportive manuscript container can provide technical precision while leaving
+scientific judgement, disciplinary conventions, and authorial voice intact.
+
+\section*{Artifact record}
+\PrintGenesisArtifactRecord
+
+\GenesisEndMatterNotice
+
+\begin{thebibliography}{2}
+\bibitem{whitepaper}
+GenesisL1.
+\textit{A Sovereign Layer-1 for Verifiable Scientific Infrastructure}.
+Technical Whitepaper, Version 1.0, 2026.
+
+\bibitem{community}
+GenesisL1 Community Publication Templates.
+\textit{Scientific Tone and Authoring Guide}.
+Version 3.0, 2026.
+\end{thebibliography}
+
+\end{document}

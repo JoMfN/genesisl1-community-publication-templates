@@ -1,13 +1,14 @@
-# Official GenesisL1 logo
+# Template assets
 
-For LaTeX, download the official navy lockup SVG from:
+`make all` copies the complete official press-kit brand directory and the corresponding
+usage guidance into this folder before compilation and packaging.
 
-https://genesisl1.com/press/assets/brand/genesisl1-lockup-navy.svg
+The template uses:
 
-Keep the SVG as the editable master. Export a tightly cropped PDF named:
+```text
+assets/brand/genesisl1-lockup-navy-2400.png
+```
 
-`genesisl1-lockup-navy.pdf`
-
-Place that PDF in this `assets/` directory. The template automatically uses it.
-When the file is absent, the compiled preview uses a text-only `GenesisL1` fallback;
-it does not recreate or substitute an unofficial mark.
+Do not redraw, recolor, crop, stretch, or rearrange the supplied marks. The logos and
+marks remain subject to `assets/guidance/ASSET_USAGE.md` and are not relicensed by
+the template code licence.

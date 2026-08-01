@@ -1,24 +1,16 @@
-# Design sources and editorial basis
+# Design and editorial basis
 
-This template family was aligned with the public GenesisL1 website, ecosystem overview,
-press kit, and technical whitepaper language available in July 2026.
+This template is an original, publisher-neutral implementation informed by:
 
-Core principles reflected in the templates:
+- the GenesisL1 July 2026 press-media kit and asset guidance;
+- the GenesisL1 Technical Whitepaper Version 1.0;
+- the supplied Nature Communications submission guide;
+- the supplied Royal Society of Chemistry Soft Matter example;
+- the supplied `chemnum` compound-numbering example;
+- annotated community feedback on tone, evidence language, methods, results,
+  discussion, and release safety.
 
-- exact and citable digital objects;
-- explicit provenance and version identity;
-- deterministic or replayable computation where applicable;
-- composable applications and public infrastructure;
-- clear distinction between live, demonstrated, experimental, in-progress, and planned work;
-- a strict boundary between ledger verification and scientific validity;
-- selective use of blockchain metadata only when it serves the scientific document.
+Publisher templates are not redistributed. Their conventions are treated as references,
+not as a claim of compatibility or endorsement.
 
-Canonical public sources:
-
-- https://genesisl1.com/
-- https://genesisl1.com/ecosystem.html
-- https://genesisl1.com/press/
-- https://genesisl1.com/press/assets/brand/genesisl1-lockup-navy.svg
-- https://genesisl1.com/press/assets/brand/genesisl1-official-logo.svg
-
-The official logo files remain the authoritative brand assets.
+The official GenesisL1 logos remain subject to `assets/guidance/ASSET_USAGE.md`.

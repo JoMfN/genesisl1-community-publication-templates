@@ -1,35 +1,184 @@
 # GenesisL1 Scientific Paper Template
 
-A full-length, discipline-neutral scientific paper template. It supports experimental,
-computational, theoretical, data, systems, replication, and negative-result papers.
-GenesisL1-specific provenance fields are optional.
+A two-column scientific-paper template for work in:
 
-## Package contents
+- blockchain;
+- computer science;
+- chemistry;
+- biochemistry;
+- biology.
 
-- `template.tex` - editable LaTeX source.
-- `template.pdf` - compiled preview.
-- `genesisl1-publication.sty` - shared GenesisL1 publication style.
-- `references.bib` - starter bibliography.
-- `SOURCES.md` - design and editorial basis.
-- `assets/README.md` - official logo instructions.
+The official GenesisL1 lockup appears only in the first-page front matter. Subsequent
+headers are text-only. The manuscript should remain a scientific paper, not a marketing
+document.
 
 ## Compile
 
+From this directory:
+
 ```bash
-latexmk -pdf template.tex
+pdflatex template.tex
+pdflatex template.tex
 ```
 
-Standard repeated `pdflatex` runs also work.
+From the repository root:
 
-## Official logo
+```bash
+make paper
+```
 
-The template is wired for the official GenesisL1 navy lockup. Export the official SVG as
-`assets/genesisl1-lockup-navy.pdf`. Until that file is present, the preview uses a text-only
-GenesisL1 fallback and never draws an unofficial replacement mark.
+The repository build is preferred because it copies the approved press-kit assets,
+compiles in an isolated build directory, removes LaTeX intermediates, creates the ZIP
+package, and audits the public `/web/` output.
 
-## Editorial principle
+## Class options
 
-This is a supportive structure, not a judgement about how contributors must think or write.
-Delete sections that do not serve the document. Add disciplinary requirements where needed.
-Clearly distinguish direct evidence, interpretation, limitations, and future work when that
-distinction improves understanding.
+```latex
+\documentclass[
+  blockchain,
+  computerscience,
+  chemistry,
+  biochemistry,
+  biology
+]{genesisl1-paper}
+```
+
+Remove unused options. The paper is two-column by default.
+
+```latex
+\documentclass[onecolumn,biology]{genesisl1-paper}
+```
+
+Use `onecolumn` only where the content or target journal requires it.
+
+## Structured abstract
+
+```latex
+\begin{GenesisFrontMatter}
+  \begin{GenesisStructuredAbstract}
+    \AbstractBackground{...}
+    \AbstractMethods{...}
+    \AbstractResults{...}
+    \AbstractConclusion{...}
+  \end{GenesisStructuredAbstract}
+\end{GenesisFrontMatter}
+```
+
+Draft toward approximately 250 words unless a target journal specifies another limit.
+
+## Equations
+
+Use ordinary numbered LaTeX equations and `cleveref` references:
+
+```latex
+\begin{equation}
+  y = mx + c
+  \label{eq:line}
+\end{equation}
+
+As shown in \cref{eq:line}, ...
+```
+
+## Code
+
+The code boxes use `listings`; no shell escape is required.
+
+```latex
+\begin{GenesisCode}[
+  language=Python,
+  caption={Example analysis},
+  label={lst:analysis}
+]
+result = analyse(data)
+\end{GenesisCode}
+```
+
+Built-in examples include Python and Solidity. Standard `listings` languages such as
+C++, Java, JavaScript, R, SQL, Bash, and Go may also be selected. JSON and Solidity
+definitions are supplied by the class.
+
+## Chemistry
+
+The chemistry profile loads `mhchem`, `chemfig`, `chemnum`, and `chemmacros`.
+
+```latex
+\ce{ATP + H2O -> ADP + P_i + H+}
+```
+
+Persistent compound numbering:
+
+```latex
+\compound{candidate-a}
+\compoundref{candidate-a}
+```
+
+Use `scheme` for a single-column scheme and `scheme*` for a scheme spanning both
+columns.
+
+### SMILES preprocessing
+
+SMILES conversion is intentionally outside the default LaTeX build. It may invoke
+external chemistry software and should remain a reviewable preprocessing step.
+
+```bash
+make chemistry-assets
+```
+
+This optional target uses Open Babel to create SVG files and a hash manifest. The
+normal `make all` command never invokes Open Babel or shell escape.
+
+## Figures
+
+Single-column:
+
+```latex
+\begin{figure}
+  \centering
+  \includegraphics[width=\columnwidth]{figure.pdf}
+  \caption{...}
+  \label{fig:single}
+\end{figure}
+```
+
+Double-column:
+
+```latex
+\begin{figure*}
+  \centering
+  \includegraphics[width=\textwidth]{wide-figure.pdf}
+  \caption{...}
+  \label{fig:wide}
+\end{figure*}
+```
+
+The helper `GenesisWideFigure` is also available.
+
+## Citations
+
+The class uses numerical, sorted, compressed citations through `natbib` and readable
+cross-references through `cleveref`.
+
+```latex
+Prior work established the method \citep{reference}.
+\Cref{fig:wide} summarises the workflow.
+```
+
+## Optional IPFS fields
+
+The class reserves optional fields without assuming that an IPFS publication already
+exists:
+
+```latex
+\GenesisIPFSCID{bafy...}
+\GenesisIPFSGateway{Optional resolver}
+```
+
+An IPFS CID identifies content; availability and scientific validity remain separate
+questions.
+
+## Principle
+
+> A supportive container, not a Procrustean bed.
+
+Delete modules that do not help the reader. Add field-specific reporting requirements
+where appropriate.
