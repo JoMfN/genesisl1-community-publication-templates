@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GenesisL1 Community Publication Templates</title>
+  <meta name="description" content="Scientific and community publication templates for GenesisL1.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="https://genesisl1.com/" class="brand">
+      <img src="assets/brand/genesisl1-lockup-navy.svg" alt="GenesisL1">
+    </a>
+    <span class="release">Community publication templates · v3.0</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Evidence · methods · provenance · interpretation</p>
+    <h1>A supportive container for scientific and community writing.</h1>
+    <p class="lead">
+      The current scientific-paper profile focuses on blockchain, computer science,
+      chemistry, biochemistry and biology. It provides two-column reading, numbered
+      equations and compounds, language-aware code, wide figures and optional exact
+      artifact references without making every paper about GenesisL1.
+    </p>
+    <div class="actions">
+      <a class="button primary" href="templates/genesisl1-scientific-paper-template.zip">Download scientific paper</a>
+      <a class="button" href="previews/scientific-paper-field-showcase.pdf">View field showcase</a>
+      <a class="button" href="release.json">Release manifest</a>
+    </div>
+  </section>
+
+  <section class="principle">
+    <strong>A supportive container, not a Procrustean bed.</strong>
+    <span>Use only the modules that improve the scientific communication.</span>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">01 / Scientific paper</p>
+        <h2>One paper class, five focused fields.</h2>
+      </div>
+      <p>
+        The official logo appears only in the first-page front matter. The scientific body
+        uses text-only headers, numerical citations and standard LaTeX semantics.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature">
+        <span>Blockchain</span>
+        <h3>Exact state and artifact references</h3>
+        <p>Optional transaction, contract, execution, content-hash and future IPFS fields.</p>
+      </article>
+      <article class="feature">
+        <span>Computer science</span>
+        <h3>Readable code boxes</h3>
+        <p>Python, Solidity, JSON and standard listings languages without shell escape.</p>
+      </article>
+      <article class="feature">
+        <span>Chemistry</span>
+        <h3>Formulae and compounds</h3>
+        <p>mhchem, chemfig, chemnum, schemes and persistent compound numbering.</p>
+      </article>
+      <article class="feature">
+        <span>Biochemistry</span>
+        <h3>Equations and molecular notation</h3>
+        <p>Standard numbered equations, biochemical reactions and cross-references.</p>
+      </article>
+      <article class="feature">
+        <span>Biology</span>
+        <h3>Nomenclature helpers</h3>
+        <p>Lightweight taxon, gene and protein commands that remain field-adaptable.</p>
+      </article>
+      <article class="feature highlight">
+        <span>All fields</span>
+        <h3>Evidence-aware language</h3>
+        <p>Observation, interpretation, uncertainty and prior literature remain distinct.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">02 / Template family</p>
+        <h2>Choose the form that fits the contribution.</h2>
+      </div>
+      <p>Only the scientific paper defaults to two columns. The other formats remain single-column.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card featured">
+        <h3>Scientific Paper</h3>
+        <p>Original research with structured abstract, methods, results, discussion, equations, chemistry and code.</p>
+        <div class="card-actions">
+          <a href="templates/genesisl1-scientific-paper-template.zip">ZIP</a>
+          <a href="previews/scientific-paper.pdf">PDF</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Community Letter</h3>
+        <p>Updates, reflections, clarification and calls for participation.</p>
+        <div class="card-actions">
+          <a href="templates/genesisl1-community-letter-template.zip">ZIP</a>
+          <a href="previews/community-letter.pdf">PDF</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Scientific Review</h3>
+        <p>Narrative, scoping, systematic or technical synthesis.</p>
+        <div class="card-actions">
+          <a href="templates/genesisl1-scientific-review-template.zip">ZIP</a>
+          <a href="previews/scientific-review.pdf">PDF</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Scientific Letter</h3>
+        <p>A concise observation, hypothesis, critique, response or early result.</p>
+        <div class="card-actions">
+          <a href="templates/genesisl1-scientific-letter-template.zip">ZIP</a>
+          <a href="previews/scientific-letter.pdf">PDF</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Protocol / Method</h3>
+        <p>Inputs, procedure, quality control, failure modes and change history.</p>
+        <div class="card-actions">
+          <a href="templates/genesisl1-protocol-method-template.zip">ZIP</a>
+          <a href="previews/protocol-method.pdf">PDF</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Manual</h3>
+        <p>Task-oriented guidance, security, troubleshooting and maintenance.</p>
+        <div class="card-actions">
+          <a href="templates/genesisl1-manual-template.zip">ZIP</a>
+          <a href="previews/manual.pdf">PDF</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split">
+    <div>
+      <p class="eyebrow">03 / Build model</p>
+      <h2>Preprocess once. Serve static files only.</h2>
+    </div>
+    <ol>
+      <li><strong>Build device:</strong> runs <code>make all</code>, compiles, packages and audits.</li>
+      <li><strong>Web device:</strong> receives only the generated <code>web/</code> directory.</li>
+      <li><strong>Nginx:</strong> serves the files read-only; no TeX or build tools are required.</li>
+    </ol>
+  </section>
+
+  <section class="boundary">
+    <strong>Scientific boundary.</strong>
+    Exact identifiers, hashes and deterministic execution can make work independently
+    inspectable. They do not establish scientific truth, safety, lawful rights, clinical
+    relevance or regulatory acceptance.
+  </section>
+</main>
+
+<footer class="wrap">
+  GenesisL1 Community Publication Templates v3.0 · Community review ·
+  <a href="SHA256SUMS">SHA256SUMS</a>
+</footer>
+</body>
+</html>
