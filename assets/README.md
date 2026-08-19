@@ -1,19 +1,18 @@
-# Official GenesisL1 assets
+# GenesisL1 official assets
 
-Use only official GenesisL1 logo assets.
+The files in `brand/` and `guidance/` were supplied in the GenesisL1 July 2026
+press-media kit.
 
-Recommended source:
+`make all` copies the complete `brand/` directory and the usage guidance into each
+template's `assets/` directory before compilation and packaging.
 
-```text
-https://genesisl1.com/press/assets/brand/genesisl1-lockup-navy.svg
-```
-
-Keep the SVG as the editable master. Export a tightly cropped PDF named:
+The scientific-paper class uses:
 
 ```text
-genesisl1-lockup-navy.pdf
+assets/brand/genesisl1-lockup-navy-2400.png
 ```
 
-Place it in this directory for repository-wide use, and copy it into each template package's `assets/` directory when preparing a portable release.
+The lockup appears only on the first page. Subsequent page headers are text-only.
 
-When no logo file is available, use a text-only `GenesisL1` fallback. Do not draw or reconstruct a substitute symbol.
+The logos and marks are not relicensed by the repository's MIT licence. Read
+`guidance/ASSET_USAGE.md` before use.

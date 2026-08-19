@@ -1,90 +1,159 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage{genesisl1-publication}
+\documentclass[
+  blockchain,
+  computerscience,
+  chemistry,
+  biochemistry,
+  biology
+]{genesisl1-paper}
 
+% Remove unused field options. The scientific paper remains two-column by default.
+% Use \documentclass[onecolumn,...]{genesisl1-paper} only when necessary.
+
+% -----------------------------------------------------------------------------
+% Document identity
+% -----------------------------------------------------------------------------
 \GenesisTitle{Title of the Scientific Paper}
-\GenesisShortTitle{Short paper title}
 \GenesisSubtitle{Optional subtitle}
-\GenesisType{Scientific Paper}
-\GenesisAuthor{Author names}
-\GenesisAffiliation{Affiliations and ORCID identifiers}
+\GenesisRunningTitle{Short paper title}
 \GenesisVersion{Draft 0.1}
-\GenesisStatus{DRAFT / COMMUNITY REVIEW / RELEASED}
-\GenesisIdentifier{DOI, repository identifier, or document ID}
-\GenesisRepository{}
-\GenesisContact{}
+\GenesisStatus{DRAFT}
+\GenesisDate{\today}
+\GenesisAuthors{Author One, Author Two and Author Three}
+\GenesisAffiliations{Affiliation one; affiliation two; ORCID identifiers where applicable}
+\GenesisCorrespondence{corresponding.author@example.org}
+\GenesisIdentifier{DOI, preprint ID, repository ID, or internal document identifier}
+\GenesisRepository{https://example.org/repository}
+\GenesisFields{Selected fields}
+\GenesisKeywords{keyword one; keyword two; keyword three}
 \GenesisLicense{CC BY 4.0}
 
+% Optional exact-artifact metadata. Leave fields empty when irrelevant.
+\GenesisDataIdentifier{}
+\GenesisCodeIdentifier{}
+\GenesisModelIdentifier{}
+\GenesisExecutionIdentifier{}
+\GenesisContentHash{}
+\GenesisIPFSCID{}
+\GenesisIPFSGateway{}
+
 \begin{document}
-\MakeGenesisTitle
 
-\begin{GenesisAbstract}
-State the research question, approach, principal result, and interpretation. Keep claims
-proportional to the evidence. Add keywords below when useful.
-\end{GenesisAbstract}
-
-\textbf{Keywords:} keyword one; keyword two; keyword three.
-
-\StatusLegend
+\begin{GenesisFrontMatter}
+  \begin{GenesisStructuredAbstract}
+    \AbstractBackground{
+      In one or two sentences, state the scientific need, the method or approach,
+      the measured parameters, and the problem addressed.
+    }
+    \AbstractMethods{
+      State the number of subjects, specimens, datasets, simulations, or software
+      systems and name the principal techniques.
+    }
+    \AbstractResults{
+      Use past tense. Report every numerical result required to support the
+      conclusion, including uncertainty and exact sample sizes where relevant.
+    }
+    \AbstractConclusion{
+      State the take-home message without introducing a new result or interpretation.
+    }
+  \end{GenesisStructuredAbstract}
+\end{GenesisFrontMatter}
 
 \section{Introduction}
-Define the scientific context, the unresolved problem, and why the work matters.
+Explain the general scientific need, the present state of knowledge, and the unresolved
+gap. Cite prior work constructively and accurately. State the hypothesis or central
+question clearly.
 
-\CentralQuestion{What precise question, objective, or hypothesis guides this study?}
-
-\section{Materials, data, and inputs}
-Describe samples, datasets, instruments, software, model versions, and inclusion criteria.
-Use exact identifiers where available.
+\subsection{Aims}
+Number multiple aims when useful:
+\begin{enumerate}
+  \item Determine ...
+  \item Compare ...
+  \item Evaluate ...
+\end{enumerate}
 
 \section{Methods}
-Describe the design and analysis at the level needed for independent examination or
-reproduction. Distinguish preregistered steps from exploratory work.
+Write in past tense and follow the order: subjects or source population, investigated
+materials, experimental or computational methods, preprocessing, outcome measures,
+and statistics.
+
+\subsection{Subjects, materials, or datasets}
+Report inclusion and exclusion criteria, exact sample sizes, versions, and source
+identifiers.
+
+\subsection{Experimental or computational procedure}
+Describe the procedure at the level required for interpretation and independent
+reproduction.
+
+\subsection{Statistical analysis}
+State the estimand, statistical tests, one- or two-tailed design, exact \(n\), definitions
+of replicates, uncertainty intervals, and decision thresholds.
 
 \begin{GenesisProvenance}
-List repositories, content hashes, software commits, environment versions, dataset IDs,
-contract addresses, transaction references, or block heights when they materially improve
-reproducibility. None are mandatory when irrelevant.
+Record repositories, commits, containers, model versions, transaction identifiers,
+block heights, content hashes, or IPFS CIDs only when they materially improve
+independent inspection. These records do not replace a complete method description.
 \end{GenesisProvenance}
 
 \section{Results}
-Report observations and analyses without mixing them unnecessarily with interpretation.
+Write in past tense. Follow the order of the figures and cite every figure in numerical
+order. Begin with exclusions, dropouts, failed runs, or successful completion counts,
+then report quantitative results.
 
 \begin{GenesisEvidence}
-Insert the directly observed, measured, calculated, or implemented result.
+State what was directly observed, measured, calculated, reconstructed, or executed.
+Support comparative words such as ``higher'', ``lower'', or ``improved'' with values,
+uncertainty, and statistical evidence where applicable.
 \end{GenesisEvidence}
 
 \section{Discussion}
-Interpret the results, compare them with prior work, and consider alternative explanations.
+Begin with the overall meaning of the study. Explain the specific technical or conceptual
+novelty, compare the findings neutrally with prior work, and distinguish differences in
+methods, populations, materials, parameters, or conditions.
+
+Recommended calibrated phrases include:
+\begin{itemize}
+  \item ``Our results provide evidence that ...'' for a supported interpretation.
+  \item ``This observation points towards ...'' for a preliminary indication.
+  \item ``The findings are consistent with ...'' when alternatives remain plausible.
+\end{itemize}
 
 \begin{GenesisInterpretation}
-State the preferred interpretation and explain why it is presently warranted.
+State the interpretation separately from direct observation. Avoid presenting an
+interpretation as established fact.
 \end{GenesisInterpretation}
 
 \begin{GenesisLimitations}
-Describe uncertainty, possible bias, unresolved assumptions, negative results, and limits
-on generalisation.
+Although encouraging, this study has limitations. State them near the end of the
+Discussion and finish with a proportionate positive statement such as:
+``Despite these limitations, the consistency of the observed effect supports ...''
 \end{GenesisLimitations}
 
-\section{Relevance to verifiable scientific infrastructure}
-Optional. Explain whether exact data, model identity, deterministic execution, rights, or
-public provenance contribute to the work.
-
-\begin{GenesisTrustBoundary}
-A ledger may establish ordering, authorisation, byte commitments, provenance, or
-deterministic execution. It does not by itself establish data quality, scientific truth,
-biomedical validity, clinical safety, or correctness of interpretation.
-\end{GenesisTrustBoundary}
-
 \section{Conclusion}
-Answer the central question at the level supported by the evidence and identify the next
-most informative test.
+Summarise the take-home message. Do not introduce a new result or interpretation.
+The conclusion should remain consistent with the abstract.
+
+\section*{Data and code availability}
+Describe access conditions, repository identifiers, licences, and embargoes. Use
+\verb|\PrintGenesisArtifactRecord| when the structured record is useful.
+
+% \PrintGenesisArtifactRecord
 
 \section*{Author contributions}
-Use a recognised contribution taxonomy or a clear prose statement.
+Use the CRediT taxonomy or another explicit contribution statement.
 
-\section*{Data, code, ethics, and competing interests}
-Provide the relevant declarations. Sensitive or identifiable data should remain off-chain
-or use an appropriate protected architecture.
+\section*{Ethics, privacy, rights, and safety}
+Provide the declarations required by the field. Do not place personal data, regulated
+plaintext, private keys, credentials, or confidential information in public immutable state.
 
-\bibliographystyle{plain}
+\section*{Competing interests and funding}
+State relevant financial, organisational, governance, founder, and commercial roles.
+
+\section*{Acknowledgements}
+Keep acknowledgements factual and concise.
+
+\GenesisEndMatterNotice
+
+\bibliographystyle{plainnat}
 \bibliography{references}
+
 \end{document}

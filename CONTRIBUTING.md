@@ -1,38 +1,47 @@
 # Contributing
 
-Contributions are welcome from scientists, developers, writers, designers, educators, node operators, and community members.
+Contributions are welcome from scientists, developers, writers, designers, and
+community members.
 
-## Principles
+## Review principle
 
-- Preserve the author's voice.
-- Do not force every contribution into a journal-paper structure.
-- Separate direct evidence from interpretation when that distinction improves understanding.
-- State limitations and uncertainty without using them to diminish contributors.
-- Use GenesisL1-specific metadata only when it materially improves provenance or reproducibility.
-- Do not imply that ledger verification establishes scientific truth.
-- Use the official GenesisL1 logo assets only.
-- Prefer accessible language and discipline-neutral defaults.
+Review the document, not the dignity or competence of its author.
 
-## Proposing a change
+Suggested changes should explain the reader benefit. Do not present one journal,
+discipline, statistical method, or writing style as universally correct.
 
-Please describe:
+## Scientific tone
 
-1. The document type affected.
-2. The communication problem being solved.
-3. Whether the change is required, recommended, or optional.
-4. Any effect on other templates.
-5. A minimal example.
+Please read:
 
-## Template compatibility
+- `docs/SCIENTIFIC_TONE.md`
+- `docs/AUTHORING_GUIDE.md`
+- `docs/MANUSCRIPT_CHECKLIST.md`
 
-Shared visual or metadata changes should be made first in:
+## Repository changes
 
-```text
-shared/genesisl1-publication.sty
+A pull request should state:
+
+1. the document format or field affected;
+2. the communication problem;
+3. whether the change is required, recommended, or optional;
+4. compatibility implications;
+5. a minimal compiling example;
+6. whether generated web packages change.
+
+## Build requirements
+
+Before requesting review:
+
+```bash
+make all
 ```
 
-Then synchronised into the six template packages.
+The build and privacy audit must pass. Do not commit LaTeX auxiliary files, private
+datasets, credentials, wallet material, local environment files, or user-home paths.
 
-## Respectful review
+## Publisher references
 
-Review the document, not the dignity or competence of its author. Suggested changes should explain the reader benefit rather than present one style as universally correct.
+External publisher templates may inform the design, but should not be copied into this
+repository unless redistribution rights are explicit. Implement publisher-neutral
+features and cite the reference in documentation.

@@ -22,8 +22,7 @@ Use BibTeX or Biber only after adding citations.
 
 ## Official logo
 
-The template is wired for the official GenesisL1 navy lockup. Export the official SVG as
-`assets/genesisl1-lockup-navy.pdf`. Until that file is present, the preview uses a text-only
+The template is wired for the official GenesisL1 navy lockup. The build copies the official press-kit brand directory into `assets/brand/`. Until that file is present, the preview uses a text-only
 GenesisL1 fallback and never draws an unofficial replacement mark.
 
 ## Editorial principle
